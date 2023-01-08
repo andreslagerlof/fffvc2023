@@ -1,0 +1,62 @@
+---
+title: "Om Vårcupen 2023"
+---
+
+## Välkommen till Vårcupen 2023
+
+Som ni vet är det bästa med ett nytt år att det också innebär att en ny upplaga av Vårcupen tar sin början! Här kan ni, som vanligt, mäta era krafter med det bästa fäktsverige har att erbjuda.
+
+Som vanligt är det Sportcheferna Tor Forsse och Andrés Gomez som står som för värdskapet och ni är självfallet välkomna till oss för alla tänkbara frågor.
+
+För såväl gamla som nya deltagare vill tävlingsarrangörerna ta tillfället i akt att inte bara hälsa er hjärtligt välkomna utan också sprida lite matnyttig information om tävlingen för att ni på så vis ska kunna göra det mesta av denna fäktmässiga hödpunkt.
+
+*Återigen - varmt välkomna!*
+
+## Tävlingsform
+
+Vårupen är en serietävling med 5 deltävlingar. Man får poäng baserat på placering och resultaten från de 4 bästa deltävlingarna räknas ihop för den slutgiltiga placeringen.
+
+Vi börjar med en pouleomgång, rankingen i den första deltävlingen baseras på slutresultatet från KM. Efter den första omgågnen fortsätter tävlingen med direkteliminering. Fram till kvartsfinalerna är det 10-stötsmatcher som gäller, från och med kvartsfinalen går vi över till 15-stötsmatcher.
+
+## Datum
+
+```{r}
+#| label: preparation
+#| echo: false
+#| warning: false
+# Load libraries
+library(tidyverse)
+library(here)
+library(lubridate)
+library(epoxy)
+
+# Read data
+dates <- read_csv2(
+  here("assets", "data","dates.csv")
+  )
+
+```
+
+```{epoxy}
+
+- Deltävling {1:5}, torsdagen {day(dates$date)} {month(dates$date, label = TRUE)}, kl. 19:00
+```
+
+## Poängsystem
+
+Poängsumman från de 4 bästa placeringarna räknas samman och den fäktare med flest poäng vinner. Om flera fäktare har samma poäng vid sammanräkningen avgörs placeringen av bästa placeringen, dvs flest 1:a platser, flest 2:a platser, etc. Om även där lika avgörs placeringarna 1-3 genom omfäktning.
+
+Så här fördelas poängen:
+
+**Placering --- Poäng**\
+1 --- 32 poäng\
+2 --- 26 poäng\
+3 --- 21 poäng\
+4 --- 19 poäng\
+5 till 8 --- 14 poäng\
+9 till 16 --- 8 poäng\
+17 till 32 --- 4 poäng
+
+## Innehåll och texter
+
+Allt innehåll på den här webbsidan har skapats av Tor och Andrés för att informera och möjligen roa alla som är intresserade av FFF:s KM. Vi ser gärna att ni återkopplar till oss om ni har några önskemål eller om ni anser att det finns mer att göra för att förbättra tävlingen eller tävlingsrapporteringen.

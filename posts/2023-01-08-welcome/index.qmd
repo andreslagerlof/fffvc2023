@@ -1,0 +1,74 @@
+---
+title: "Välkommen till Vårcupen 2023"
+author: "Andrés"
+image: spring_flowers.jpg
+description: "Midvinternattens köld må vara hård, men det finns ett värmande ljus inom synhåll: vårcupen stundar! Redan torsdagen den 26 januari smäller det."
+---
+
+![Foto av: Arno Smit, från Unsplash](spring_flowers.jpg)
+
+Julskinka och dopp i gryta är inget för en FFF:are, nej vi älskar hård träning och inget kan få oss mer motiverade än att kasta oss ut på pisten för att mäta våra krafter mot varandra. Inte undra på att Sportcheferna fått hett om öronen med krav på att släppa lös årets första stora händelse - Vårcupen 2023.
+
+Då så, då kör vi!
+
+Här har ni en sammanfattning av det viktigaste.
+
+### Datumen ni ska skriva upp:
+
+```{r}
+#| label: preparation
+#| echo: false
+#| warning: false
+# Load libraries
+library(tidyverse)
+library(here)
+library(lubridate)
+library(epoxy)
+
+# Read data
+dates <- read_csv2(
+  here("assets", "data","dates.csv")
+  )
+
+```
+
+```{epoxy}
+
+- Deltävling {1:5}, torsdagen {day(dates$date)} {month(dates$date, label = TRUE)}, kl. 19:00
+```
+
+::: callout-note
+Det är viktigt att komma i tid! Skriv in dig i protokollet som finns tillgängligt kl. 18:45
+:::
+
+### Tävlingsformat
+
+Vårupen är en serietävling med 5 deltävlingar. Man får poäng baserat på placering och resultaten från de 4 bästa deltävlingarna räknas ihop för den slutgiltiga placeringen.
+
+Vi börjar med en pouleomgång, rankingen i den första deltävlingen baseras på slutresultatet från KM. Efter den första omgågnen fortsätter tävlingen med direkteliminering. Fram till kvartsfinalerna är det 10-stötsmatcher som gäller, från och med kvartsfinalen går vi över till 15-stötsmatcher.
+
+### Poängsystem
+
+**Placering -- Poäng**
+
+1 -- 32 poäng
+
+2 -- 26 poäng
+
+3 -- 21 poäng
+
+4 -- 19 poäng
+
+5 till 8 -- 14 poäng
+
+9 till 16 -- 8 poäng
+
+17 till 32 -- 4 poäng
+
+### Övrigt
+
+Se till att ha er utrustning i topptrim och tänk på att ni måste ha minst två värjor till tävlingen.
+
+Än finns det tid till förberedelser, träna hårt så ses vi på pisten den 27 januari!
+
+*Lycka till alla!*
