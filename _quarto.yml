@@ -9,9 +9,7 @@ website:
     right:
       - omkm2023.qmd
       - icon: github
-        href: https://github.com/
-      - icon: twitter
-        href: https://twitter.com
+        href: https://github.com/andreslagerlof/fffvc2023
   page-footer: 
     left: "FFF Vårcup 2023"
     right: "Sportcheferna FFF"
