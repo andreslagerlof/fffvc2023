@@ -4,6 +4,7 @@ project:
 website:
   title: "FFF Vårcup 2023"
   favicon: favicon-16x16.png
+  google-analytics: "G-30GEHTGQGT"
   navbar:
     logo: fff_logo_50pct.png
     right:
