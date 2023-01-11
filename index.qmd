@@ -3,10 +3,11 @@ title: "Nyheter från Vårcupen 2023"
 listing:
   contents: posts
   sort: "date desc"
-  type: default
+  type: grid
   categories: false
   sort-ui: false
   filter-ui: false
+  date-format: iso
 page-layout: full
 title-block-banner: true
 ---
