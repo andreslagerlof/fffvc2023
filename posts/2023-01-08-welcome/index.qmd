@@ -1,6 +1,7 @@
 ---
 title: "Välkommen till Vårcupen 2023"
 author: "Andrés"
+date: "2022-01-10"
 image: spring_flowers.jpg
 description: "Midvinternattens köld må vara hård, men det finns ett värmande ljus inom synhåll: vårcupen stundar! Redan torsdagen den 26 januari smäller det."
 ---
