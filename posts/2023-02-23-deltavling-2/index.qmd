@@ -1,0 +1,157 @@
+---
+title: "Robert störst i den andra deltävlingen"
+author: "Tor och Andrés"
+description: "Förra gången var det klubbens unga, med Ian i spetsen, som gjorde en tydlig markering i Vårcupen. Denna gång svarade de gamla rävarna med eftertryck när Robban, efter stor dramatik, entrade tronen."
+date: "2023-02-27"
+image: "robban_segrare.jpeg"
+---
+
+![Robert Brolin visar vägen](robban_segrare.jpeg){fig-alt="Robert Brolin vann den andra deltävlingen i Vårcupen 2023"}
+
+Oj vilken vulkan av aktivitet, viljor och hård kamp som den 2:a deltävlingen i årets Vårcup bjöd på! Låt oss börja med att minnas var vi slutade förra gången. Vi kunde då konstatera att Ian gjorde sig till talesman för den unga generationen som tydligt vill markera att vi står inför en ny era genom att oblygt rycka åt sig segern i deltävling 1. Samtidigt får vi inte glömma bort att Robban egentligen borde ha vunnit, eller i alla fall varit i final, om det inte varit för en olycklig och högst osannolik förlust i kvartsfinalen. Med detta färskt i minnet är vi mogna att kasta oss över torsdagens händelser.
+
+### Pouleomgången
+
+Som vanligt lockade Vårcupen till sig en stor skara skickliga och äventyrslystna fäktare. Denna gång fylldes fyra pouleprotokoll med totalt 20 fäktare från när och fjärran. Till den senare kategorin förtjänar Caspian från Ystad ett särskilt omnämnande. Caspian hade tagit sig till Stockholm för att beskåda sin systers modiga försvarade det konungsliga slottet och passade samtidigt på att visa sina färdigheter på FFF:s pister. Väl här kunde han inte motstå frestelsen att göra debut i Vårcupssammanhang.
+
+\
+Till att börja med såg denna deltävling ut att ta vid där den förra slutade. Ian, höll hov i den första poulen med 4 raka segrar och med ett starkt stötindex erövrade han också en 1:a ranking inför direkteliminationen. Men Ian var inte ensam om att briljera, också Tor och Ehsan tog sig igenom poulomgånge med idel segrar och placerade sig i nämnd ordning efter Ian i direktelimineringens ranking.
+
+![Full fart framåt!](full_fart.jpeg){fig-alt="Fäktarna kämpar hårt för att ta sig vidare till direktelmineringen"}
+
+### Kvartsfinalerna
+
+Ian fortsatte på den väg han slagit in på och tog sig utan hinder in i kvarten. Där fick han framfart ett snöpligt slut. CH som medvetet hållit sig i det fördolda valde nu att kliva fram i rampljuset, innan Ian hade förstått vad som hade hänt kunde CH med ett leende förbereda sig på att fäkta semifinal.
+
+Nästa kvartsfinal stod mellan Ernest och Daman. Det utvecklade sig till en jämn kamp som avslutades med en knapp seger för Ernest, som därmed kunde se fram emot en semifinal mot CH.
+
+Ehsan fick dessvärre betala ett högt pris för sina insatser i poulomgången. Trots att han i tack vare sin ranking fick stå över första direktelimineringsmatchen hade hans kraftreserv beskattats så hårt att han inte mäktade med att freda sig mot en sprudlande Francesco som tog över kvartsfinalplatsen. Francescos motståndare i kvartsfinalen blev Robert som nu tydligt visade att stora saker var i görningen. Med klinisk precision avhandlade Robert kvartsfinalen och klev in i semifinalen.
+
+I den sista kvartsfinalen var det Lukas som ställdes öga mot öga mot Tor, för att göra upp om vem som skulle få ta sig an Robert i semin. Här var det Lukas utgick med en klar seger, efter att ha briljerat mot Tor med sina finurliga franska finesser.
+
+### Semifinaler
+
+CH som efter att ha besegrat Ian fäktade som i trans mot Ernest i den första semifinalen. Återigen och lyckades CH prestera en bragd när han, med en stöts skillnad, tog sig till final. 
+
+I den andra semifinalen var det Lukas och Robert som drabbade samman. Robert var dock kliniskt obeveklig och satte resolut stopp för Lukas frejdiga framfart. 
+
+Detta innebar en återkomst av de ärrade veteranerna som i form av CH och Robert skulle göra upp om segern.
+
+### Medaljörerna
+
+I den stjärnspäckade finalen försökte CH förgäves surfa vidare på den framgångsvåg som tagit honom förbi till synes oöverstigliga hinder. Dessvärre var motståndet denna gång omöjligt för ens CH att rå på. Robban tog genast grepp om matchen och vred den sedan lugnt och obevekligt utom räckhåll från sin motståndare. Äntligen hade Robert återtagit sin rättmätiga plats i toppen. Grattis Robban!
+
+I matchen om tredjeplaceringen lyckades Ernest skaka av sig den snöpliga förlusten mot C-H i semifinalen och kunde manövrera ut Lukas för att därmed knipa tredjeplatsen. Starkt Ernest!
+
+Så här ser den fullständiga tablån ut
+
+![Tablån från Vårcupen del 2](tabla.jpeg){fig-alt="Tablå från den andra deltävlingen i  FFF:s Vårcupe"}
+
+## Resultatlistor
+
+Här är den fullständiga resultatlistan från Vårcupens 2:a deltävling
+
+```{r}
+#| label: load_libraries
+#| echo: false
+#| warning: false
+
+library(tidyverse)
+library(here)
+library(stringr)
+library(gt)
+library(epoxy)
+
+```
+
+```{r}
+#| label: load_data_and_functions
+#| echo: false
+#| warning: false
+
+vc <- read_csv2(here("assets", "data", "results2023.csv"))
+
+# Source calculate_points function
+source(here("assets", "functions", "vc_functions.R"))
+
+# Read data
+dates <- read_csv2(
+  here("assets", "data","dates.csv")
+  )
+
+```
+
+```{r}
+#| label: set_manual_vars
+#| echo: false
+#| warning: false
+
+# Define current competition
+current_comp_name <- "vc_2"
+
+# Define current comp no
+current_comp_no <- parse_number(current_comp_name)
+
+```
+
+```{r}
+#| label: grand_tot_prep
+#| echo: false
+#| warning: false
+
+# Reshape to long format
+vc_long <- to_long_format(vc) 
+
+tot_prep <- vc_long |> 
+  prep_data()
+
+# Calculate points
+tot_points <-tot_prep |> 
+  poits_calc()
+
+```
+
+```{r}
+#| label: comp_results_table
+#| echo: false
+#| warning: false
+
+# Select variables
+vc_current <- tot_points |> 
+  filter(comp_no == current_comp_no) |> 
+  na.omit(place)
+
+# Create competition results table
+vc_current |> curr_comp_table()
+
+```
+
+Som vi redan kunnat konstatera är vi inne i en kamp mellan generationer där vi har Ian som den främste kämpen från de ungas sida med Robert som representant för de äldre. När vi nu lagt torsdagens möte till handlingarna blir det uppenbart att det ännu är för tidigt att våga spå om åt vilket håll denna generationernas kamp kommer att kantra, eller vad säger ni själva? Titta på totalsammanställningen:
+
+```{r}
+#| label: totals_table
+#| echo: false
+#| warning: false
+
+grand_tot <- tot_points |> 
+  calculate_grand_tot()
+
+tot_standings <- tot_points |> 
+  return_res()
+
+# Create totals table
+tot_standings |> 
+  totals_table()
+  
+  
+```
+
+## Vi blickar framåt
+
+Två deltävlingar har nu avverkats men än återstår mycket, ni har väl koll på datumen för de kommande tävlingarna? Om inte kommer kommer här en påminnelse:
+
+```{epoxy}
+- Deltävling {3:5}, torsdagen {day(dates$date)[3:5]} {month(dates$date[3:5], label = TRUE)}, kl. 19:00
+```
+
+Nu är det sportlov och därför ett unikt tillfälle att intensifiera förberedelserna av kropp och själ. Ta hand om er och satsa allt!

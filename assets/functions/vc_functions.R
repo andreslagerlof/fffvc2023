@@ -3,45 +3,106 @@
 
 # This file contains all custom functions.
 # List of functions
-# 1. 
-# 2. 
+# 1. to_long format
+# 2. calculate_points
 # 3. 
 
 # Make pivot_longer -------------------------------------------------------
 # reshapes a tibble to long format
 to_long_format <- function(df){
-  df %>%
+  df |> 
     # make long dataframe
     pivot_longer(cols = starts_with("vc_"), 
                  names_to = "comp_no",
                  names_prefix = "vc_",
-                 values_to = "place")
+                 values_to = "place") |> 
+    filter(comp_no <= {{ current_comp_no }}) |> 
+    mutate(comp_no = as.numeric(comp_no))
+}
+
+
+# Prep data ---------------------------------------------------------------
+prep_data <- function(df){
+  df |> 
+    mutate(place_char = as.character(place))
 }
 
 # Calculate points --------------------------
 
-# This function takes a dataframe with a variable called "place" and calculates points
-
-calculate_points <- function(df, place) {
+# This function takes a tibble with a variable called "curr_comp" and calculates points
+poits_calc <- function(df) {
   tot <- df %>% 
-    mutate(points = case_when(
-      place == 1 ~ 32,
-      place == 2 ~ 26,
-      place == 3 ~ 21,
-      place == 4 ~ 19,
-      between(place, 5, 8) ~ 14,
-      between(place, 9, 16) ~  8,
-      between(place, 17, 32) ~ 4
+    mutate(points = case_match(place_char,
+                               "1" ~ 32,
+                               "2" ~ 26,
+                               "3" ~ 21,
+                               "4" ~ 19,
+                               c("5", "6", "7", "8") ~ 14,
+                               c("9", "10", "11", "12", "13", "14", "15", "16") ~  8,
+                               c("17", "18", "19", "20", "21", "22", "23", "24", 
+                                 "25", "26", "27", "28", "29", "30", "31", "32") ~ 4
     ))
 }
 
-# Make pivot_longer --------------------------
-# reshapes a tibble to long format
-to_long_format <- function(df){
-  df %>%
-    # make long dataframe
-    pivot_longer(cols = starts_with("km_"), 
-                 names_to = "comp_no",
-                 names_prefix = "km_",
-                 values_to = "place")
+
+# Create results table for current competition
+curr_comp_table <- function(df){
+  df |> 
+    arrange(place) |> 
+    select(name, place, points) |> 
+    rename(Namn = name, 
+           Placering = place,
+           Poäng = points) |> 
+    gt() |> 
+    tab_header(
+      title = paste0("Resultat från deltävling ", 
+                     {{ current_comp_no }}),
+      subtitle = "Vårcupen 2023")
+}
+
+## Calculate grand total points for all competitions (1-3)
+calculate_grand_tot <- function(df){
+    df |>  
+    group_by(name) |> 
+    summarise(sum_points = sum(points, na.rm = TRUE)) |>  
+    arrange(desc(sum_points))
+}
+
+# Crete standings table including rank and totals -------------------------
+
+# modify data to produce all necessary variables
+# in correct output format
+return_res <- function(df){
+  # prepare standings table
+  df |> 
+    select(-place, - place_char) |>  
+    pivot_wider(
+      names_from = comp_no, 
+      values_from = points) |> 
+    
+    # Create new piv df with totals column
+    full_join(grand_tot, by = "name") |>  
+    arrange(desc(sum_points)) |> 
+    
+    # Add ranking
+    mutate(rank = min_rank(desc(sum_points))) |> 
+    relocate(rank, everything())
+}
+
+# Totals table
+totals_table <- function(df){
+  df |> 
+    select(-gender) |> 
+    rename(`#` = rank,
+           Namn = name,
+           `Totalt` = sum_points) |> 
+    gt() |> 
+    tab_spanner(
+      label = "Deltävling nr.",
+      columns = -c(`#`, Namn, Totalt)
+    ) |> 
+    tab_header(
+      title = paste0("Totalställning efter ", 
+                     {{ current_comp_no }}, " deltävlningar")) |> 
+    tab_source_note(source_note = "Vårcupen 2023")
 }
