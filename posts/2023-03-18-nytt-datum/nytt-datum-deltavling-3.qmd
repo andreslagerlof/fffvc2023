@@ -1,0 +1,23 @@
+---
+title: "Nytt datum för den 3:e deltävlingen"
+author: "Andrés"
+description: "Det nya datumet för deltävling 3 är den 28 mars."
+date: "2023-03-18"
+image: "new-date.jpg"
+---
+
+::: callout-important
+## Nytt datum!
+
+OBS! Deltävling nr. 3 kommer att ske **tisdagen den 28 mars!**
+:::
+
+![Foto: Towfiqu Barbhuiya, Unsplash](new-date.jpg){fig-alt="Bild på nytt datum - den 28 mars 2023"}
+
+## Uppdatera era kalendrar!
+
+Eftersom FFF:s årsmöte kommer att hållas den 30:e flyttar vi Vårcupen till tisdagen den 28:e mars. Se till att uppdatera era kalendrar och påminn era vänner.
+
+Se också till att komma på årsmötet.
+
+Träna på fram till dess!
