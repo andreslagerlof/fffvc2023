@@ -1,0 +1,156 @@
+---
+title: "Rapport från Vårcupens 3:e deltävling"
+author: "Andrés och Tor"
+description: "Trenden blir allt starkare, det är en hård kamp mellan det nya och det gamla och hittills ser det ut som att de gamla håller fortet."
+date: "2023-04-01"
+image: "ch segrare2.jpg"
+---
+
+![Hårda tag i Vårcupen deltävling 3. Foto: Tor](kamp2.jpg)
+
+Knappt har ekot efter Roberts segertjut från förra deltävlingen hunnit eka ut innan den tredje deltävlingen i årets Vårcup sköljer över fäktklubben, denna gång med inte mindre än 24 kombattanter. För att sätta allt i sitt rätta perspektiv börjar vi med en titt tillbaka.
+
+## Tillbakablick
+
+Årets Vårcup kan närmast beskrivas som ett furiöst pokerspel med ära och ryktbarhet i potten. I den första given var det Ian som tog hem spelet och visade samtidigt att han, som talesman för de yngre, på ett fräckt sätt tänkte utmana den rådande hegemonin där de gamla hävdat sin sedvanerätt. Kort sagt: en ny tid randas.
+
+Dessvärre visade det sig att de gamla hjulspåren inte låter sig suddas ut så lätt. Robert spelade i den andra deltävlingen ut ess efter ess och kunde på ett betryggande sätt plocka hem den andra given. Sammanfattning: de gamla slår tillbaka.
+
+Sedan dess har CH med eftertryck presenterat sig på den externa fäktscenen med en kvartsfinalplats i Fillol. Våra yngre elittrupper svarade med att dra ut på plundringståg runt om i Svea rike och återvände med rikligt byte från JSM i Kalmar där guld (damer) och brons (herrar) i lag samt guld och silver individuellt i damtävlingen bärgades. Dessutom tog sig både Francesco och Ian till kvartsfinal individuellt. 
+
+Det var i detta spända läge som dörrarna öppnades för ytterligare en batalj med höga insatser den 28 mars i herrens år 2023.
+
+## Poulomgången
+
+Tävlingen började i vanlig ordning med en pouleomgång. Denna gång med 3 stycken 8-mannapouler från vilken förra deltävlingens suverän Robert generöst delade ut stötar i alla riktningar men undgick själv skickligt att bli träffad. För denna insats premierades han med en 1:a ranking. Bakom honom stod också Ernest, Janne och Ian för kraftfulla insatser och rankades efter Ian i nämnd ordning.
+
+![Ernest och Ian diskuterar taktik inför direkten. Foto: Tor](taktik2.jpg){fig-alt="Ernest och Ian diskuterar taktik inför direkten"}
+
+## 32-tablån
+
+I 32-tablån kunde de 8 bäst rankade från den tidigare omgången stå över men efter några häftiga möten kunde Holger, Louise, Carloman, Lukas, Francesco, Anders och Ehsan göra sig klara för nästa del av tävlingen.
+
+![Den fullständiga 32 tablån.](tabla.jpg)
+
+## 16-tablån
+
+Robert gick nu återi igen in i tävlingen med samma resultat som tidigare, hans aura av oövervinnlighet förstärktes ytterligare. Louise visade återigen varför hon är en av rikets mest omtalade fäktare och Thomas precisionsskytte gav honom seger i sin match mot Tor. Ian fortsatte oavtrutet att roffa åt sig. Lucas och Janne drabbade samman i en kamp mellan giganter, från vilken Lucas utgick med segern och CH lyckades med möda betvinga Francesco. Ernest började dock mattas något men gick ändå vidare till nästa omgång.
+
+## Kvartsfinaler
+
+I den första kvartsfinalmatchen fick Robert tufft motstånd i form av Louise, men tack vare sin starka dagsform lyckades Robert ta sig förbi även detta hinder. Bredvid drabbade Thomas och Ian samman i en hård envig som till slut föll ut till Ians fördel. CH som nu fått upp ångan ordentligt lyckades betvinga Lucas. Tyvärr lyckades inte Ernest inte hålla koncentrationen uppe och bestraffades på grund av detta med en knapp förlust.
+
+## Semifinaler
+
+Den första semifinalen blev ett toppmöte mellan två av kvällens starkast lysande stjärnor. Inför denna match fanns det mycket som talade till Roberts fördel, men några i publiken mumlade att det fanns goda skäl att se upp med Ian. Ians tempväxlingar firade stora triumfer och en av kvällens stora överraskningar var ett faktum.
+
+Den andra semifinalen blev dock en besvikelse. Publiken hade väntat sig en tuff drabbning mellan Ernest och CH, men fick istället se en grå tillställning där CH utan minsta ansträngning gjorde processen kort med Andrés.
+
+## Finaler
+
+Nu var sanningens ögonblick äntligen inne, är tiden för ungdomens herravälde ett faktum, eller skulle de gamle ytterligare en gång hålla kvar sitt grepp om makten? Efter första hälften av matchen hängde denna fråga fortfarande i luften när Ian och CH dansade runt utbytte tjuvnyp. Men därefter var det CH som först hittade en lucka, varefter han sakta men obevekligt lyckade skaffa sig ett övertag som Ian inte kunde ta igen. Någon minut senare kunde CH med ett faderligt leende på läpparna utropa sig till segrare och samtidigt lägga ytterligare en titel till sin omfångsrika meritlista. Stort grattis CH!
+
+![En final som sent ska glömmas. Foto: Tor](ian-ch-final2.jpg){fig-alt="Final mellan CH och Ian"}
+
+I matchen om tredjepriset hade Robert hämtat sig från överraskningen i semifinalen och återgick till samma resoluta fäktning som han tidigare under kvällen visat upp. I brist av värdigt motstånd innebar detta en överlägsen seger.
+
+## Resultatsammanställning
+
+Den fullständiga tablån såg således ut så här:
+
+Eller om ni föredrar resultaten i tabellform:
+
+```{r}
+#| label: load_libraries
+#| echo: false
+#| warning: false
+
+library(tidyverse)
+library(here)
+library(stringr)
+library(gt)
+library(epoxy)
+```
+
+```{r}
+#| label: load_data_and_functions
+#| echo: false
+#| warning: false
+
+vc <- read_csv2(here("assets", "data", "results2023.csv"))
+
+# Source calculate_points function
+source(here("assets", "functions", "vc_functions.R"))
+
+# Read data
+dates <- read_csv2(
+  here("assets", "data","dates.csv")
+  )
+```
+
+```{r}
+#| label: set_manual_vars
+#| echo: false
+#| warning: false
+
+# Define current competition
+current_comp_name <- "vc_3"
+
+# Define current comp no
+current_comp_no <- parse_number(current_comp_name)
+```
+
+```{r}
+#| label: grand_tot_prep
+#| echo: false
+#| warning: false
+
+# Reshape to long format
+vc_long <- to_long_format(vc) 
+
+tot_prep <- vc_long |> 
+  prep_data()
+
+# Calculate points
+tot_points <-tot_prep |> 
+  poits_calc()
+
+```
+
+```{r}
+#| label: comp_results_table
+#| echo: false
+#| warning: false
+
+# Select variables
+vc_current <- tot_points |> 
+  filter(comp_no == current_comp_no) |> 
+  na.omit(place)
+
+# Create competition results table
+vc_current |> curr_comp_table()
+```
+
+Trots denna seger för de gamla, så har ändå den nya generationens fäktare i egenskap av Ian klättrat upp till en total ledning i Vårcupen. CH har närmat sig Robert i kampen om 2:a platsen och Ernest har ett gott utgångsläge för att klättra vidare. Så här ser den kompletta listan ut
+
+```{r}
+#| label: totals_table
+#| echo: false
+#| warning: false
+
+grand_tot <- tot_points |> 
+  calculate_grand_tot()
+
+tot_standings <- tot_points |> 
+  return_res()
+
+# Create totals table
+tot_standings |> 
+  totals_table()
+```
+
+Så nu när det återstår 2 tävlingar är det hög tid att lägga på ett extra kol på träningarna så att ni gör er redo för upploppet. Kör hårt!
+
+Vi avslutar med en bild över en överlycklig segrare.
+
+![En lycklig segrare. Foto: Tor](ch.jpeg)
