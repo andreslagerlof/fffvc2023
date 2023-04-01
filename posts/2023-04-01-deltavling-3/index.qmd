@@ -34,7 +34,7 @@ I 32-tablån kunde de 8 bäst rankade från den tidigare omgången stå över me
 
 ## 16-tablån
 
-Robert gick nu återi igen in i tävlingen med samma resultat som tidigare, hans aura av oövervinnlighet förstärktes ytterligare. Louise visade återigen varför hon är en av rikets mest omtalade fäktare och Thomas precisionsskytte gav honom seger i sin match mot Tor. Ian fortsatte oavtrutet att roffa åt sig. Lucas och Janne drabbade samman i en kamp mellan giganter, från vilken Lucas utgick med segern och CH lyckades med möda betvinga Francesco. Ernest började dock mattas något men gick ändå vidare till nästa omgång.
+Robert gick nu åter igen in i tävlingen med samma resultat som tidigare, hans aura av oövervinnlighet förstärktes ytterligare. Louise visade ytterligare en gång varför hon är en av rikets mest omtalade fäktare och Thomas precisionsskytte gav honom seger i sin match mot Tor. Ian fortsatte oavtrutet att roffa åt sig. Lucas och Janne drabbade samman i en kamp mellan giganter, från vilken Lucas utgick med segern och CH lyckades med möda betvinga Francesco. Ernest började dock mattas något men gick ändå vidare till nästa omgång.
 
 ## Kvartsfinaler
 
@@ -48,7 +48,7 @@ Den andra semifinalen blev dock en besvikelse. Publiken hade väntat sig en tuff
 
 ## Finaler
 
-Nu var sanningens ögonblick äntligen inne, är tiden för ungdomens herravälde ett faktum, eller skulle de gamle ytterligare en gång hålla kvar sitt grepp om makten? Efter första hälften av matchen hängde denna fråga fortfarande i luften när Ian och CH dansade runt och utbytte tjuvnyp. Men därefter var det CH som först hittade en lucka, varefter han sakta men obevekligt lyckade skaffa sig ett övertag som Ian inte kunde ta igen. Någon minut senare kunde CH med ett faderligt leende på läpparna utropa sig till segrare och samtidigt lägga ytterligare en titel till sin omfångsrika meritlista. Stort grattis CH!
+Nu var sanningens ögonblick äntligen inne. Är tiden för ungdomens herravälde ett faktum, eller skulle de gamle ytterligare en gång hålla kvar sitt grepp om makten? Efter första hälften av matchen hängde denna fråga fortfarande i luften när Ian och CH dansade runt och utbytte tjuvnyp. Men därefter var det CH som först hittade en lucka, varefter han sakta men obevekligt lyckade skaffa sig ett övertag som Ian inte kunde ta igen. Någon minut senare kunde CH med ett faderligt leende på läpparna utropa sig till segrare och samtidigt lägga ytterligare en titel till sin omfångsrika meritlista. Stort grattis CH!
 
 ![En final som sent ska glömmas. Foto: Tor](ian-ch-final2.jpg){fig-alt="Final mellan CH och Ian"}
 
@@ -56,9 +56,7 @@ I matchen om tredjepriset hade Robert hämtat sig från överraskningen i semifi
 
 ## Resultatsammanställning
 
-Den fullständiga tablån såg således ut så här:
-
-Eller om ni föredrar resultaten i tabellform:
+Här kan ni studera resultaten i tabellform. Vi börja med att sammanfatta den 3:e deltävlningen.
 
 ```{r}
 #| label: load_libraries
