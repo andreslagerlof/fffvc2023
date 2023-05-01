@@ -1,0 +1,152 @@
+---
+title: "Rapport från deltävling 4"
+author: "Andrés"
+image: "tor-segrare.jpg"
+date: "2023-04-28"
+description: "Den näst sista tävlingen bjöd, som vanligt, på spänning och dramatik när en nygammal mästare gjorde sig påmind."
+execute:
+  echo: false
+  warning: false
+---
+
+![Full koncentration när poulerna började.](start.jpg){fig-alt="poulefäktning i Vårcupens 4:e deltävling"}
+
+Dom tunga tävlingarna avlöser varandra. Efter helgens SM-tävlingar i Göteborg växlade temperaturen upp ytterligare då anmälningstiden gick ut klockan 19:00 i årets 4:e deltävling i Vårcupen.
+
+## Tillbakablick
+
+I vanlig ordning tar vi en kort paus för att minnas var vi lämnade av förra gången. Då var det en svettig men överlycklig CH som sträckte sina armar i luften och tillkännagav för alla som var villiga att lyssna att han äntligen hade vunnit en deltävling. Denna bragd förde honom också upp på en lika imponerande som överaskande 3:e plats i totalsammanställningen.
+
+Detta till trots var det fortfarande Ian, i egenskap av den unga generationens riddare, som behöll greppet om den sammanlagda förstaplatsen, före Robert Brolin.
+
+Kommer de ungas anspråk på tronskifte inom klubben bli verklighet? Vi kom i veckans 4:e och näst sista deltävling lite närmare svaret på denna fråga.
+
+## Poulomgången
+
+Med nästan kuslig koncentration avverkade kvällens 19 modiga fäktare den ena matchen efter den andra i uppgörelsen om viktiga rankingplatser inför direkteliminationen. Ingen var dock mer beslutsam än Tor som var illa ute i tre matcher, men varje gång lyckades utgå med uddastötsseger. Styrkt av detta fortsatte han med stort självförtroende utan förluster genom hela gruppfäktningen och premierades med en förstarankning.
+
+Även Ehasan gick starkt och placerade sig som 2:a följd av Ernest och den skickligt fäktande Louise.
+
+## 32 tablån
+
+I den ofullständiga 32 tablån fick Calle Wiman, som dagen till ära gjorde tävlingsdebut i årets Vårcup mäta sina krafter med Anders om avancemang. Tyvärr för Calles del visade sig bristen på rutin vara en allt för tung börda och han fick se sig besegrad av en pigg Anders.
+
+I en annan uppgörelse lyckades Thomas betvinga den hårt kämpande Teodor.
+
+## 16 tablån
+
+Anders framfart blev dock kortvarig, för på andra sidan av pisten kopplade Tor in och visade att takterna från första poulomgången hade inte avklingat. CH som i vanlig ordning medfört en rik medaljskörd från veteranklassen i SM lät inte Daman komma in i matchen.
+
+I drabbningen mellan Lucas och Per var det Lucas som drog det längsta strået. Tyvärr lyckades inte Louise gå vidare från sin match och Ernest satte stopp för Kalle Frödes framfart. Likaså utgjorde Ian ett för stort hinder för Holger och Johan betvingade Carloman och Thomas se sig besegrad av Ehsan.
+
+## Kvartsfinaler
+
+I den hårda sammandrabbningen mellan Johan och Ehsan räckte inte Ehsans krafter hela vägen. Johans frejdiga attacker nötte sakta ned Ehsans försvarslinje och till sisst var det Johan som kunde gläjda sig åt en semifinalplats. Johans motståndare skulle bli vinnaren i matchen mellan Ernest och Ian. Denna dag var det Ernests tur att ha vinden i ryggen.
+
+Lucas lät sig inte heller störas utan tog sig lätt vidare till semifinal efter en komfortabel seger mot Andrés.
+
+I giganternas kamp där CH och Tor drabbades samman var förväntningarna stora på en enkel seger för CH. Försmädligt nog trillskades CH:s vapen och Tors resoluta offensiv var mer än vad CH kunde värja sig mot. Med stoiskt lugn gratulerade CH sin motsåndare och fick istället ge sig av hemåt för att sortera sina SM-medaljer i det välfyllda prisskåpet.
+
+## Semifinaler
+
+Nu var det endast kvällens riktigt stora stjärnor som fortfarande var kvar i den olidligt spännande tävlingen. Lucas tog, med full fart sig an Tor men den här kvällen var det inte mycket som kunde bringa Tor ur fattningen. Sakna men säkert kunde Tor manövrera sig till finalplatsen.
+
+Även den andra semifinalen blev en kraftmätning där Johans iver ställdes mot Ernest snabbhet. Som förväntat blev det en tät strid där ingen av fäktarna släppte till några luckor. Ernest lyckades dock till sist komma igenom Johans försvar varför denne istället fick rikta in sig mot en match om 3:e priset.
+
+## Slutkampen
+
+Johan som inte hade repat sig efter energiutbrottet som gav honom segern över Ehsan kunde inte riktigt upprepa sin tidigare bragd. Dessutom var Lucas revanchsugen efter nederlaget mot Tor. Båda dessa faktorer bidrog nog till att Lucas, efter en hård kamp, kunde glädjas åt en 3:e plats.
+
+![Lucas och Johan är glada efter att ha gjort upp om 3:e platsen](lucas_johan.jpg){fig-alt="Lucas och Johan"}
+
+Allt var rärmed riggat för kvällens sista macher. Skulle Tor kunna hålla sin första ranking tävlingen igenom? Länge såg det inte ut så. Trots att matchen var jämn var det oftast Ernest som kunde tillskansa sig en ledning med en eller två stötar. Med en desperat kraftsamling lyckades dock Tor arbeta sig tillbaka in i machen och fäktade till sig en utjämning vid ställningen 11 lika. Därefter lättade Tor aldrig mer på gasen och kunde, några stötar senare, titulera sig som segrare i året 4:e vårcupsdeltävling.
+
+Stort grattis till Tor!
+
+Så här blev den fullständiga resultatlistan från deltävlingen:
+
+```{r}
+#| label: load_libraries
+
+library(tidyverse)
+library(here)
+library(stringr)
+library(gt)
+library(epoxy)
+```
+
+```{r}
+#| label: load_data_and_functions
+
+vc <- read_csv2(here("assets", "data", "results2023.csv"))
+
+# Source calculate_points function
+source(here("assets", "functions", "vc_functions.R"))
+
+```
+
+```{r}
+#| label: set_manual_vars
+
+# Define current competition
+current_comp_name <- "vc_4"
+
+# Define current comp no
+current_comp_no <- parse_number(current_comp_name)
+```
+
+```{r}
+#| label: grand_tot_prep
+
+# Reshape to long format
+vc_long <- to_long_format(vc) 
+
+tot_prep <- vc_long |> 
+  prep_data()
+
+# Calculate points
+tot_points <-tot_prep |> 
+  poits_calc()
+```
+
+```{r}
+#| label: comp_results_table
+
+# Select variables
+vc_current <- tot_points |> 
+  filter(comp_no == current_comp_no) |> 
+  na.omit(place)
+
+# Create competition results table
+vc_current |> curr_comp_table()
+```
+
+![Tor och Ernest gratulerar varandra efter finalen, gissa vem som vann?](tor_ernest.jpg)
+
+Här är den fullständiga tablån.
+
+![Den fullständiga tablån](tabla-vc4.jpg){fig-alt="Den fullständiga tablån från Vårcupens 4:e deltävling"}
+
+## Totalställingen
+
+Trenden som vi tidigt kunde se som pekade på att klubbens yngre fäktare nu vill ta över är tydlig då Ian alltjämt behåller sin ledning med Ernest på en tredjeplats. Endast CH, som i Roberts frånvaro har klättrat till en andraplats, håller sätällningarna som representant för de gamla. Tor tog med sin seger också ett rejält skutt uppåt i tabellen och är nu på en fjärdeplats.
+
+Men som vanligt är det en jämn affär och som vanligt kommer den 5:e och sista tävlingen bli en riktig nagelbitare då allt avgörs.
+
+```{r}
+#| label: totals_table
+
+grand_tot <- tot_points |> 
+  calculate_grand_tot()
+
+tot_standings <- tot_points |> 
+  return_res()
+
+# Create totals table
+tot_standings |> 
+  totals_table()
+```
+
+Träna hårt så ses vi torsdagen den 25:e maj för att göra upp om slutplaceringarna!
+
+![En glad Tor efter segern](tor-segrare.jpg){fig-alt="En glad Tor efter segern i Vårcupens 4:e deltävling"}
