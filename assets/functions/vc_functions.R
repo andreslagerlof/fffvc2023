@@ -1,4 +1,3 @@
-
 # About -------------------------------------------------------------------
 
 # This file contains all custom functions.
@@ -60,16 +59,29 @@ curr_comp_table <- function(df){
       subtitle = "Vårcupen 2023")
 }
 
-## Calculate grand total points for all competitions (1-3)
+## Calculate grand total points for all competitions (1-5)
 calculate_grand_tot <- function(df){
-    df |>  
+  df |>  
     group_by(name) |> 
     summarise(sum_points = sum(points, na.rm = TRUE)) |>  
     arrange(desc(sum_points))
 }
 
-# Crete standings table including rank and totals -------------------------
+# Calculate points for the 4 best competitions
+calculate_top_4 <- function(df){
+  df |> 
+  group_by(name) |> 
+    slice_max(points, 
+              n = 4,
+              with_ties = FALSE) |> 
+    summarise(sum_top4_points = sum(points, na.rm = TRUE)) |>  
+    arrange(desc(sum_top4_points))
+}
 
+
+# Prepare data for standings ----------------------------------------------
+
+# Create results tibble for all competitions
 # modify data to produce all necessary variables
 # in correct output format
 return_res <- function(df){
@@ -89,6 +101,22 @@ return_res <- function(df){
     relocate(rank, everything())
 }
 
+# Create results tibble for final results, after 5 competitions
+final_res <- function(df){
+  df |> 
+    # Create new column with 4 best results
+    full_join(top_4, by = "name") |>  
+    arrange(desc(sum_top4_points)) |> 
+    select(-rank) |> 
+    # Add ranking
+    mutate(rank = min_rank(desc(sum_top4_points))) |> 
+    relocate(rank, everything())
+    
+}
+
+
+# Crete standings table including rank and totals -------------------------
+
 # Totals table
 totals_table <- function(df){
   df |> 
@@ -103,6 +131,27 @@ totals_table <- function(df){
     ) |> 
     tab_header(
       title = paste0("Totalställning efter ", 
+                     {{ current_comp_no }}, " deltävlningar")) |> 
+    tab_source_note(source_note = "Vårcupen 2023")
+}
+
+
+# Create final results table ----------------------------------------------
+
+filal_table <- function(df){
+  df |> 
+    select(-gender) |> 
+    rename(`#` = rank,
+           Namn = name,
+           `Totalt` = sum_points, 
+           `4 bästa` = sum_top4_points) |>
+    gt() |>  
+    tab_spanner(
+      label = "Deltävling nr.",
+      columns = -c(`#`, Namn, Totalt, `4 bästa`)
+    ) |> 
+    tab_header(
+      title = paste0("Slutställning efter ", 
                      {{ current_comp_no }}, " deltävlningar")) |> 
     tab_source_note(source_note = "Vårcupen 2023")
 }
